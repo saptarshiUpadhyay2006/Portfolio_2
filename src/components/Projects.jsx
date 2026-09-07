@@ -91,11 +91,10 @@ export default function Projects() {
             key={f}
             onClick={() => setFilter(f)}
             data-testid={`project-filter-${f.toLowerCase().replace(/[\/]/g, "-")}`}
-            className={`font-code text-[11px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border transition-all shrink-0 ${
-              filter === f
-                ? "bg-cyan-400 text-[#05070a] border-cyan-400 shadow-[0_0_20px_rgba(0,243,255,0.3)] font-semibold"
-                : "border-slate-700 text-slate-400 hover:border-cyan-400/40 hover:text-cyan-400"
-            }`}
+            className={`font-code text-[11px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border transition-all shrink-0 ${filter === f
+              ? "bg-cyan-400 text-[#05070a] border-cyan-400 shadow-[0_0_20px_rgba(0,243,255,0.3)] font-semibold"
+              : "border-slate-700 text-slate-400 hover:border-cyan-400/40 hover:text-cyan-400"
+              }`}
           >
             {f}
           </button>
@@ -192,11 +191,12 @@ export default function Projects() {
               </DialogHeader>
 
               {active.image && (
-                <div className="rounded-xl overflow-hidden border border-slate-800/60">
+                <div className="rounded-xl overflow-hidden border border-slate-800/60 bg-[#070a12]">
                   <img
-                    src={active.image}
+                    key={active.image}
+                    src={`${active.image}?v=${Date.now()}`}
                     alt={`${active.name} product screenshot`}
-                    className="w-full h-auto object-cover"
+                    className="w-full h-auto max-h-[420px] object-cover rounded-xl"
                   />
                 </div>
               )}
