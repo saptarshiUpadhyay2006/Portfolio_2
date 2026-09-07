@@ -6,7 +6,7 @@ import { LINKS } from "../data";
 export default function ResumeModal({ isOpen, onClose }) {
   const [loading, setLoading] = useState(true);
 
-  // Direct Drive Embed preview link + fallback to local PDF
+  // Direct Drive preview URL
   const driveEmbedUrl = "https://drive.google.com/file/d/1_foUjalODzHxTdmsjr9ypM7pz_D_58wH/preview";
   const downloadUrl = "/resume.pdf";
 
@@ -21,7 +21,7 @@ export default function ResumeModal({ isOpen, onClose }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 bg-[#030712]/85 backdrop-blur-md"
+          className="fixed inset-0 bg-[#030712]/90 backdrop-blur-md"
         />
 
         {/* Modal Window Container with explicit height */}
@@ -30,11 +30,12 @@ export default function ResumeModal({ isOpen, onClose }) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.96, y: 12 }}
           transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-          className="relative z-10 w-full max-w-5xl h-[85vh] min-h-[600px] flex flex-col rounded-2xl glass border border-slate-800 shadow-[0_25px_80px_rgba(0,0,0,0.95)] overflow-hidden bg-[#070b14]"
+          style={{ height: "85vh", minHeight: "520px", maxHeight: "850px" }}
+          className="relative z-10 w-full max-w-5xl flex flex-col rounded-2xl glass border border-slate-800 shadow-[0_25px_80px_rgba(0,0,0,0.95)] overflow-hidden bg-[#070b14]"
           data-testid="resume-modal"
         >
-          {/* Modal Header Bar - fixed 60px height */}
-          <div className="h-[60px] flex items-center justify-between px-5 border-b border-slate-800/80 bg-[#020408] shrink-0">
+          {/* Modal Header Bar - flex shrink 0 */}
+          <div className="h-[60px] shrink-0 flex items-center justify-between px-5 border-b border-slate-800/80 bg-[#020408]">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400">
                 <FileText size={16} />
@@ -84,8 +85,8 @@ export default function ResumeModal({ isOpen, onClose }) {
             </div>
           </div>
 
-          {/* Modal Body Container with ABSOLUTE INSET positioning for iframe */}
-          <div className="relative flex-1 w-full h-[calc(100%-60px)] min-h-[540px] bg-[#050810] overflow-hidden">
+          {/* Modal Body - flex-1 min-h-0 with relative positioning */}
+          <div className="relative flex-1 min-h-0 w-full bg-[#050810] overflow-hidden">
             {loading && (
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-slate-400 bg-[#050810] z-20">
                 <Loader2 size={26} className="animate-spin text-cyan-400" />
