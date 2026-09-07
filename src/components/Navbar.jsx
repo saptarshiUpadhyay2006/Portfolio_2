@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ onOpenResume }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -69,15 +69,13 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <a
-            href={LINKS.resume}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={onOpenResume}
             data-testid="nav-resume-button"
             className="flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-400/40 text-cyan-400 font-code text-xs uppercase tracking-widest hover:bg-cyan-400/10 hover:shadow-[0_0_20px_rgba(0,243,255,0.2)] transition-all"
           >
             <FileDown size={14} /> Resume
-          </a>
+          </button>
         </div>
       </nav>
     </motion.header>

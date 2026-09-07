@@ -91,7 +91,7 @@ const SOCIALS = [
   { icon: Mail, href: `mailto:${LINKS.email}`, label: "Email", testId: "hero-social-email" },
 ];
 
-export default function Hero() {
+export default function Hero({ onOpenResume, liveStats }) {
   const canvasRef = useRef(null);
   useParticleCanvas(canvasRef);
   const { scrollY } = useScroll();
@@ -102,6 +102,8 @@ export default function Hero() {
     e.preventDefault();
     window.__lenis?.scrollTo("#projects", { offset: -72 });
   };
+
+  const solvedLabel = liveStats?.leetcode?.solved || "1,000+";
 
   return (
     <section id="top" data-testid="hero-section" className="relative min-h-screen flex items-center overflow-hidden">
@@ -133,7 +135,7 @@ export default function Hero() {
           <p className="text-base sm:text-lg text-slate-400 leading-relaxed" data-testid="hero-tagline">
             IT Undergrad @ <span className="text-slate-200">Jadavpur University</span> · CGPA{" "}
             <span className="text-cyan-400 font-code">9.09</span> — LeetCode{" "}
-            <span className="text-slate-200">Knight 1882</span>, Codeforces{" "}
+            <span className="text-slate-200">Knight 1882</span> ({solvedLabel} Solved), Codeforces{" "}
             <span className="text-slate-200">Specialist</span>, and builder of production-grade
             software that ships and scales.
           </p>
@@ -154,15 +156,13 @@ export default function Hero() {
             View Projects
             <ArrowDown size={16} className="group-hover:translate-y-0.5 transition-transform" />
           </a>
-          <a
-            href={LINKS.resume}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={onOpenResume}
             data-testid="hero-resume-button"
             className="flex items-center gap-2 px-7 py-3.5 rounded-full border border-slate-700 text-slate-200 font-display font-semibold text-sm tracking-wide hover:border-cyan-400/50 hover:text-cyan-400 hover:shadow-[0_0_25px_rgba(0,243,255,0.15)] transition-all"
           >
             <FileDown size={16} /> Resume
-          </a>
+          </button>
           <div className="flex items-center gap-2 ml-2">
             {SOCIALS.map(({ icon: Icon, href, label, testId }) => (
               <a
@@ -186,7 +186,7 @@ export default function Hero() {
           transition={{ delay: 1.4, duration: 1 }}
           className="mt-16 flex flex-wrap gap-3"
         >
-          {["LeetCode Knight · 1882", "Codeforces Specialist · 1437", "CGPA 9.09"].map((b) => (
+          {[`LeetCode Knight · 1882 (${solvedLabel})`, "Codeforces Specialist · 1437", "CGPA 9.09"].map((b) => (
             <span
               key={b}
               className="font-code text-[11px] uppercase tracking-widest px-4 py-2 rounded-full glass text-slate-400"
@@ -196,7 +196,7 @@ export default function Hero() {
           ))}
         </motion.div>
         </div>
-        <HeroCard />
+        <HeroCard liveStats={liveStats} />
       </motion.div>
 
       <motion.div
@@ -282,7 +282,7 @@ const StatBar = ({ label, value, pct, tone, delay }) => (
   </div>
 );
 
-function HeroCard() {
+function HeroCard({ liveStats }) {
   const typed = useTypewriter();
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
@@ -292,6 +292,9 @@ function HeroCard() {
     const py = (e.clientY - r.top) / r.height - 0.5;
     setTilt({ x: -py * 7, y: px * 7 });
   };
+
+  const lcSolved = liveStats?.leetcode?.solved || "1,000+";
+  const isLive = liveStats?.leetcode?.isLive;
 
   return (
     <motion.div
@@ -320,7 +323,7 @@ function HeroCard() {
           <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
           <span className="font-code text-[11px] text-slate-500 ml-2">saptarshi.config</span>
           <span className="ml-auto flex items-center gap-1.5 font-code text-[10px] text-emerald-400">
-            <span className="status-dot w-1.5 h-1.5 rounded-full bg-emerald-400" /> online
+            <span className="status-dot w-1.5 h-1.5 rounded-full bg-emerald-400" /> {isLive ? "live api sync" : "online"}
           </span>
         </div>
 
@@ -351,7 +354,7 @@ function HeroCard() {
         </div>
 
         <div className="mt-6 space-y-4">
-          <StatBar label="LeetCode · Knight" value="1882" pct="94%" tone="cyan" delay={1.5} />
+          <StatBar label={`LeetCode · ${lcSolved} Solved`} value="1882" pct="94%" tone="cyan" delay={1.5} />
           <StatBar label="Codeforces · Specialist" value="1437" pct="72%" tone="emerald" delay={1.7} />
           <StatBar label="CGPA @ Jadavpur" value="9.09" pct="91%" tone="cyan" delay={1.9} />
         </div>

@@ -69,7 +69,7 @@ const LiveBadge = ({ show }) =>
 
 const cap = (s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
 
-export default function Achievements() {
+export default function Achievements({ liveStats }) {
   const [lc, setLc] = useState(null);
   const [cf, setCf] = useState(null);
 
@@ -79,9 +79,10 @@ export default function Achievements() {
     axios.get(`${API}/cp/codeforces`).then((r) => setCf(r.data)).catch(() => {});
   }, []);
 
-  const lcRating = lc?.rating ? Math.round(lc.rating) : CP_STATS.leetcode.rating;
-  const lcTop = lc?.topPercentage ? `Top ${Math.max(1, Math.round(lc.topPercentage))}%` : CP_STATS.leetcode.top;
-  const lcSolved = lc?.solved?.All ? `${lc.solved.All.toLocaleString()}+` : CP_STATS.leetcode.solved;
+  const isLiveActive = !!lc || !!liveStats?.leetcode?.isLive;
+  const lcRating = lc?.rating ? Math.round(lc.rating) : (liveStats?.leetcode?.rating || CP_STATS.leetcode.rating);
+  const lcTop = lc?.topPercentage ? `Top ${Math.max(1, Math.round(lc.topPercentage))}%` : (liveStats?.leetcode?.rank || CP_STATS.leetcode.top);
+  const lcSolved = lc?.solved?.All ? `${lc.solved.All.toLocaleString()}+` : (liveStats?.leetcode?.solved || CP_STATS.leetcode.solved);
   const cfRating = cf?.maxRating ?? CP_STATS.codeforces.rating;
   const cfRank = cf?.maxRank ? cap(cf.maxRank) : CP_STATS.codeforces.label;
   const cfNote = cf?.rating && cf.rating !== cf.maxRating ? `current ${cf.rating} · ` : "";
@@ -96,7 +97,7 @@ export default function Achievements() {
           <div className="grid grid-cols-2 gap-6 h-full">
             <div className="glow-card glass rounded-2xl p-7" data-testid="leetcode-stat-card">
               <p className="font-code text-[10px] uppercase tracking-[0.25em] text-slate-500 mb-3">
-                LeetCode<LiveBadge show={!!lc} />
+                LeetCode<LiveBadge show={isLiveActive} />
               </p>
               <p className="font-display text-4xl font-bold text-cyan-400" data-testid="leetcode-rating">
                 <Counter to={lcRating} />

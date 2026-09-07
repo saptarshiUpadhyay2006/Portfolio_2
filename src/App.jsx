@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Lenis from "lenis";
 import { Toaster } from "sonner";
 import Navbar from "./components/Navbar";
@@ -12,8 +12,13 @@ import Skills from "./components/Skills";
 import Leadership from "./components/Leadership";
 import TerminalContact from "./components/TerminalContact";
 import Footer from "./components/Footer";
+import ResumeModal from "./components/ResumeModal";
+import { useLiveStats } from "./lib/useLiveStats";
 
 export default function App() {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const liveStats = useLiveStats();
+
   useEffect(() => {
     const lenis = new Lenis({ duration: 1.15, smoothWheel: true });
     window.__lenis = lenis;
@@ -29,22 +34,26 @@ export default function App() {
     };
   }, []);
 
+  const handleOpenResume = () => setIsResumeOpen(true);
+  const handleCloseResume = () => setIsResumeOpen(false);
+
   return (
     <div className="min-h-screen bg-[#05070a] text-slate-200 antialiased">
       <div className="grain" />
-      <Navbar />
+      <Navbar onOpenResume={handleOpenResume} />
       <main>
-        <Hero />
+        <Hero onOpenResume={handleOpenResume} liveStats={liveStats} />
         <Marquee />
         <Manifesto />
         <Experience />
         <Projects />
-        <Achievements />
+        <Achievements liveStats={liveStats} />
         <Skills />
         <Leadership />
         <TerminalContact />
       </main>
-      <Footer />
+      <Footer onOpenResume={handleOpenResume} />
+      <ResumeModal isOpen={isResumeOpen} onClose={handleCloseResume} />
       <Toaster
         theme="dark"
         position="bottom-right"

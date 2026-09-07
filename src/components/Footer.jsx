@@ -3,7 +3,7 @@ import { ArrowUp } from "lucide-react";
 import { LINKS } from "../data";
 import SectionFX from "./SectionFX";
 
-export default function Footer() {
+export default function Footer({ onOpenResume }) {
   const [time, setTime] = useState("");
 
   useEffect(() => {
@@ -50,6 +50,9 @@ export default function Footer() {
             <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer" data-testid="footer-linkedin-link" className="font-code text-xs uppercase tracking-widest text-slate-500 hover:text-cyan-400 transition-colors">
               LinkedIn
             </a>
+            <button onClick={onOpenResume} data-testid="footer-resume-link" className="font-code text-xs uppercase tracking-widest text-slate-500 hover:text-cyan-400 transition-colors">
+              Resume
+            </button>
             <a href={`mailto:${LINKS.email}`} data-testid="footer-email-link" className="font-code text-xs uppercase tracking-widest text-slate-500 hover:text-cyan-400 transition-colors">
               Email
             </a>
