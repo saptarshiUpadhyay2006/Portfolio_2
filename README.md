@@ -78,9 +78,9 @@ portfolio-2/
 ├── public/
 │   ├── avatar.jpg           # Profile photo
 │   └── projects/
-│       ├── greenlens.jpg    # Project screenshots
-│       ├── homequest.jpg
-│       └── binivex.jpg
+│       ├── greenlens.png    # Project screenshots
+│       ├── homequest.png
+│       └── binivex.png
 ├── src/
 │   ├── components/
 │   │   ├── Navbar.jsx
