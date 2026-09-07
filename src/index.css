@@ -3510,3 +3510,18 @@ body {
 .\[\&_tr\]\:border-b tr{
   border-bottom-width: 1px;
 }
+.moving-bandage {
+  position: relative;
+  overflow: hidden;
+}
+.moving-bandage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(0,243,255,0.2), transparent);
+  animation: bandage-slide 8s linear infinite;
+}
+@keyframes bandage-slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}

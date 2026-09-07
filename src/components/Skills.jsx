@@ -45,7 +45,7 @@ export default function Skills() {
                         q && s.toLowerCase().includes(q)
                           ? "bg-cyan-400/15 border-cyan-400/50 text-cyan-300 shadow-[0_0_15px_rgba(0,243,255,0.15)]"
                           : "bg-slate-800/50 border-slate-700/50 text-slate-300 hover:border-cyan-400/30 hover:text-cyan-300"
-                      }`}
+                      }`} moving-bandage
                     >
                       {s}
                     </span>

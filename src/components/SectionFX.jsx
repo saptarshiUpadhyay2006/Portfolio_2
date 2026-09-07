@@ -104,7 +104,6 @@ export default function SectionFX({ variant = "orbs" }) {
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
       {variant === "grid" && (
         <>
-          <div className="section-grid absolute inset-0" />
           <ParticleField tint="cyan" />
           <Stars />
           <Orb className="w-[400px] h-[400px] -top-24 right-10 bg-cyan-500/[0.08]" />
@@ -112,7 +111,6 @@ export default function SectionFX({ variant = "orbs" }) {
       )}
       {variant === "dots" && (
         <>
-          <div className="section-dots absolute inset-0" />
           <ParticleField tint="emerald" />
           <Stars variant="b" />
           <Orb className="w-[380px] h-[380px] -bottom-20 left-10 bg-emerald-500/[0.07]" />
@@ -136,7 +134,6 @@ export default function SectionFX({ variant = "orbs" }) {
       )}
       {variant === "beam" && (
         <>
-          <div className="section-beam absolute inset-0" />
           <Orb className="w-[420px] h-[420px] -top-20 right-10 bg-cyan-500/[0.08]" />
           <ParticleField tint="cyan" />
           <Stars />
@@ -144,7 +141,6 @@ export default function SectionFX({ variant = "orbs" }) {
       )}
       {variant === "grid-glow" && (
         <>
-          <div className="section-grid absolute inset-0" />
           <Orb className="w-[520px] h-[520px] -top-40 left-1/3 bg-emerald-500/[0.08]" />
           <Orb anim="orb-drift-rev" className="w-[380px] h-[380px] -bottom-24 right-10 bg-cyan-500/[0.06]" />
           <ParticleField tint="mixed" />
@@ -153,7 +149,6 @@ export default function SectionFX({ variant = "orbs" }) {
       )}
       {variant === "dots-glow" && (
         <>
-          <div className="section-dots absolute inset-0" />
           <Orb className="w-[440px] h-[440px] -bottom-32 left-1/4 bg-cyan-500/[0.08]" />
           <ParticleField tint="cyan" />
           <Stars />

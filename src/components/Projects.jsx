@@ -130,7 +130,7 @@ export default function Projects() {
 
                 <div className="flex flex-wrap gap-2 mt-6">
                   {p.tags.map((t) => (
-                    <span key={t} className="font-code text-[10px] px-2.5 py-1 rounded bg-slate-800/60 border border-slate-700/50 text-slate-400">
+                    <span key={t} className="font-code text-[10px] px-2.5 py-1 rounded bg-slate-800/60 border border-slate-700/50 text-slate-400 moving-bandage">
                       {t}
                     </span>
                   ))}

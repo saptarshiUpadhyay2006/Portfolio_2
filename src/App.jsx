@@ -13,6 +13,7 @@ import Leadership from "./components/Leadership";
 import TerminalContact from "./components/TerminalContact";
 import Footer from "./components/Footer";
 import ResumeModal from "./components/ResumeModal";
+import RetroGrid from "./components/ui/retro-grid";
 import { useLiveStats } from "./lib/useLiveStats";
 
 export default function App() {
@@ -38,21 +39,35 @@ export default function App() {
   const handleCloseResume = () => setIsResumeOpen(false);
 
   return (
-    <div className="min-h-screen bg-[#05070a] text-slate-200 antialiased">
-      <div className="grain" />
-      <Navbar onOpenResume={handleOpenResume} />
-      <main>
-        <Hero onOpenResume={handleOpenResume} liveStats={liveStats} />
-        <Marquee />
-        <Manifesto />
-        <Experience />
-        <Projects />
-        <Achievements liveStats={liveStats} />
-        <Skills />
-        <Leadership />
-        <TerminalContact />
-      </main>
-      <Footer onOpenResume={handleOpenResume} />
+    <div className="relative min-h-screen bg-[#05070a] text-slate-200 antialiased overflow-x-hidden">
+      {/* Single persistent RetroGrid base layer for the entire web app */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <RetroGrid
+          angle={65}
+          cellSize={60}
+          opacity={0.16}
+          lightLineColor="#00f3ff"
+          darkLineColor="#00f3ff"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#05070a]/30 via-transparent to-[#05070a]/70 pointer-events-none" />
+      </div>
+
+      <div className="grain relative z-10" />
+      <div className="relative z-10">
+        <Navbar onOpenResume={handleOpenResume} />
+        <main>
+          <Hero onOpenResume={handleOpenResume} liveStats={liveStats} />
+          <Marquee />
+          <Manifesto />
+          <Experience />
+          <Projects />
+          <Achievements liveStats={liveStats} />
+          <Skills />
+          <Leadership />
+          <TerminalContact />
+        </main>
+        <Footer onOpenResume={handleOpenResume} />
+      </div>
       <ResumeModal isOpen={isResumeOpen} onClose={handleCloseResume} />
       <Toaster
         theme="dark"

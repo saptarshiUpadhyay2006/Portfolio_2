@@ -22,8 +22,7 @@ export default function Footer({ onOpenResume }) {
   }, []);
 
   return (
-    <footer data-testid="site-footer" className="relative border-t border-slate-800/60 mt-10 overflow-hidden">
-      <SectionFX variant="orbs" />
+    <footer data-testid="site-footer" className="relative z-20 border-t border-cyan-500/10 mt-10 overflow-hidden" style={{ background: 'linear-gradient(to bottom, #0f172a, #0b1120)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-12 sm:py-20">
         <h2
           data-testid="footer-kinetic-text"

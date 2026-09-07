@@ -107,7 +107,7 @@ export default function Hero({ onOpenResume, liveStats }) {
 
   return (
     <section id="top" data-testid="hero-section" className="relative min-h-screen flex items-center overflow-hidden">
-      <div className="hero-grid-bg absolute inset-0" />
+      <div className="hero-grid-bg absolute inset-0 opacity-30" />
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
       <div className="absolute -top-40 left-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] rounded-full bg-cyan-500/10 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[280px] sm:w-[400px] h-[280px] sm:h-[400px] rounded-full bg-emerald-500/10 blur-[120px] pointer-events-none" />
