@@ -298,10 +298,10 @@ function HeroCard({ liveStats }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, x: 60 }}
+      animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 1.15, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="block mt-6 lg:mt-0 relative max-w-lg mx-auto lg:max-w-none w-full"
+      className="hidden lg:block relative"
       style={{ perspective: 1200 }}
     >
       <div className="absolute -inset-10 bg-cyan-400/[0.07] blur-[90px] rounded-full pointer-events-none" />
@@ -315,20 +315,20 @@ function HeroCard({ liveStats }) {
           transition: "transform 0.18s ease-out",
           transformStyle: "preserve-3d",
         }}
-        className="relative glass rounded-3xl p-5 sm:p-7 border-cyan-400/15 shadow-[0_30px_80px_rgba(0,0,0,0.5)]"
+        className="relative glass rounded-3xl p-7 border-cyan-400/15 shadow-[0_30px_80px_rgba(0,0,0,0.5)]"
       >
-        <div className="flex items-center gap-2 pb-4 sm:pb-5 border-b border-slate-800/70">
+        <div className="flex items-center gap-2 pb-5 border-b border-slate-800/70">
           <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
           <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
           <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
-          <span className="font-code text-[10px] sm:text-[11px] text-slate-500 ml-1.5 sm:ml-2">saptarshi.config</span>
-          <span className="ml-auto flex items-center gap-1.5 font-code text-[9px] sm:text-[10px] text-emerald-400">
+          <span className="font-code text-[11px] text-slate-500 ml-2">saptarshi.config</span>
+          <span className="ml-auto flex items-center gap-1.5 font-code text-[10px] text-emerald-400">
             <span className="status-dot w-1.5 h-1.5 rounded-full bg-emerald-400" /> {isLive ? "live api sync" : "online"}
           </span>
         </div>
 
-        <div className="flex items-center gap-3.5 sm:gap-4 mt-5 sm:mt-6">
-          <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-emerald-400 p-[2px] shadow-[0_0_25px_rgba(0,243,255,0.25)] shrink-0 group">
+        <div className="flex items-center gap-4 mt-6">
+          <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-emerald-400 p-[2px] shadow-[0_0_25px_rgba(0,243,255,0.25)] shrink-0 group">
             <img
               src="/avatar.jpg"
               alt="Saptarshi Upadhyay"
@@ -341,25 +341,25 @@ function HeroCard({ liveStats }) {
             <span className="status-dot absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-[#0b0e14]" />
           </div>
           <div>
-            <p className="font-display font-semibold text-slate-50 text-sm sm:text-base leading-tight">Saptarshi Upadhyay</p>
-            <p className="font-code text-[10px] sm:text-[11px] text-cyan-400 mt-0.5">full-stack · ai systems</p>
-            <p className="font-code text-[9px] sm:text-[10px] text-slate-500 mt-0.5">kolkata, in · utc+5:30</p>
+            <p className="font-display font-semibold text-slate-50 leading-tight">Saptarshi Upadhyay</p>
+            <p className="font-code text-[11px] text-cyan-400 mt-0.5">full-stack · ai systems</p>
+            <p className="font-code text-[10px] text-slate-500 mt-0.5">kolkata, in · utc+5:30</p>
           </div>
         </div>
 
-        <div className="mt-5 sm:mt-6 rounded-xl bg-[#020408] border border-slate-800/70 px-3.5 sm:px-4 py-2.5 sm:py-3 font-code text-xs sm:text-[13px]">
+        <div className="mt-6 rounded-xl bg-[#020408] border border-slate-800/70 px-4 py-3 font-code text-[13px]">
           <span className="text-emerald-400">$ ~ </span>
           <span className="text-slate-300">{typed}</span>
           <span className="caret-blink inline-block w-2 h-3.5 bg-cyan-400/80 align-middle ml-0.5" />
         </div>
 
-        <div className="mt-5 sm:mt-6 space-y-3.5 sm:space-y-4">
+        <div className="mt-6 space-y-4">
           <StatBar label={`LeetCode · ${lcSolved} Solved`} value="1882" pct="94%" tone="cyan" delay={1.5} />
           <StatBar label="Codeforces · Specialist" value="1437" pct="72%" tone="emerald" delay={1.7} />
           <StatBar label="CGPA @ Jadavpur" value="9.09" pct="91%" tone="cyan" delay={1.9} />
         </div>
 
-        <div className="mt-5 sm:mt-6 pt-4 border-t border-slate-800/70 flex items-center justify-between font-code text-[9px] sm:text-[10px] text-slate-500">
+        <div className="mt-6 pt-4 border-t border-slate-800/70 flex items-center justify-between font-code text-[10px] text-slate-500">
           <span>
             status: <span className="text-emerald-400">open_to_work</span>
           </span>
@@ -369,10 +369,10 @@ function HeroCard({ liveStats }) {
         </div>
       </div>
 
-      <FloatChip className="hidden md:inline-block -left-7 top-14" delay={0.4}>React</FloatChip>
-      <FloatChip className="hidden md:inline-block -right-5 top-1/3" delay={1.2}>Python</FloatChip>
-      <FloatChip className="hidden md:inline-block -left-5 bottom-24" delay={2}>Docker</FloatChip>
-      <FloatChip className="hidden md:inline-block -right-7 bottom-8" delay={0.8}>AI / ML</FloatChip>
+      <FloatChip className="-left-7 top-14" delay={0.4}>React</FloatChip>
+      <FloatChip className="-right-5 top-1/3" delay={1.2}>Python</FloatChip>
+      <FloatChip className="-left-5 bottom-24" delay={2}>Docker</FloatChip>
+      <FloatChip className="-right-7 bottom-8" delay={0.8}>AI / ML</FloatChip>
     </motion.div>
   );
 }
