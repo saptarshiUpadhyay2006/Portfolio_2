@@ -24,17 +24,17 @@ export default function Footer({ onOpenResume }) {
   return (
     <footer data-testid="site-footer" className="relative border-t border-slate-800/60 mt-10 overflow-hidden">
       <SectionFX variant="orbs" />
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-12 sm:py-20">
         <h2
           data-testid="footer-kinetic-text"
-          className="font-display font-bold tracking-tight leading-none text-4xl sm:text-6xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-slate-500 via-slate-200 to-cyan-400"
+          className="font-display font-bold tracking-tight leading-none text-3xl sm:text-6xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-slate-500 via-slate-200 to-cyan-400"
         >
           LET'S BUILD
           <br />
           THE FUTURE.
         </h2>
 
-        <div className="flex flex-wrap items-end justify-between gap-6 mt-14 pt-8 border-t border-slate-800/60">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 mt-10 sm:mt-14 pt-8 border-t border-slate-800/60">
           <div>
             <p className="font-code text-xs text-slate-500">
               Kolkata, India · <span className="text-emerald-400">{time} IST</span>
@@ -43,7 +43,7 @@ export default function Footer({ onOpenResume }) {
               &copy; 2026 Saptarshi Upadhyay · Engineered with intent
             </p>
           </div>
-          <div className="flex items-center gap-5">
+          <div className="flex flex-wrap items-center gap-3.5 sm:gap-5">
             <a href={LINKS.github} target="_blank" rel="noopener noreferrer" data-testid="footer-github-link" className="font-code text-xs uppercase tracking-widest text-slate-500 hover:text-cyan-400 transition-colors">
               GitHub
             </a>

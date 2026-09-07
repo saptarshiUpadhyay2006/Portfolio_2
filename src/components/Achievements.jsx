@@ -94,33 +94,33 @@ export default function Achievements({ liveStats }) {
 
       <div className="grid lg:grid-cols-5 gap-6 mb-6">
         <FadeIn className="lg:col-span-2">
-          <div className="grid grid-cols-2 gap-6 h-full">
-            <div className="glow-card glass rounded-2xl p-7" data-testid="leetcode-stat-card">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 h-full">
+            <div className="glow-card glass rounded-2xl p-6 sm:p-7" data-testid="leetcode-stat-card">
               <p className="font-code text-[10px] uppercase tracking-[0.25em] text-slate-500 mb-3">
                 LeetCode<LiveBadge show={isLiveActive} />
               </p>
-              <p className="font-display text-4xl font-bold text-cyan-400" data-testid="leetcode-rating">
+              <p className="font-display text-3xl sm:text-4xl font-bold text-cyan-400" data-testid="leetcode-rating">
                 <Counter to={lcRating} />
               </p>
               <p className="text-sm text-slate-300 mt-1">{CP_STATS.leetcode.label} · {lcTop}</p>
               <p className="font-code text-xs text-slate-500 mt-3" data-testid="leetcode-solved">{lcSolved} problems solved</p>
             </div>
-            <div className="glow-card glass rounded-2xl p-7" data-testid="codeforces-stat-card">
+            <div className="glow-card glass rounded-2xl p-6 sm:p-7" data-testid="codeforces-stat-card">
               <p className="font-code text-[10px] uppercase tracking-[0.25em] text-slate-500 mb-3">
                 Codeforces<LiveBadge show={!!cf} />
               </p>
-              <p className="font-display text-4xl font-bold text-emerald-400" data-testid="codeforces-rating">
+              <p className="font-display text-3xl sm:text-4xl font-bold text-emerald-400" data-testid="codeforces-rating">
                 <Counter to={cfRating} />
               </p>
               <p className="text-sm text-slate-300 mt-1">{cfRank}</p>
               <p className="font-code text-xs text-slate-500 mt-3" data-testid="codeforces-solved">{cfNote}{CP_STATS.codeforces.solved} problems solved</p>
             </div>
-            <div className="glow-card glass rounded-2xl p-7 col-span-2 flex items-center gap-5" data-testid="cgpa-stat-card">
+            <div className="glow-card glass rounded-2xl p-6 sm:p-7 sm:col-span-2 flex items-center gap-5" data-testid="cgpa-stat-card">
               <span className="w-12 h-12 rounded-xl bg-emerald-400/10 border border-emerald-400/25 flex items-center justify-center text-emerald-400 shrink-0">
                 <GraduationCap size={22} />
               </span>
               <div>
-                <p className="font-display text-3xl font-bold text-slate-50">
+                <p className="font-display text-2xl sm:text-3xl font-bold text-slate-50">
                   <Counter to={9.09} decimals={2} />
                 </p>
                 <p className="text-sm text-slate-400">CGPA · IT, Jadavpur University</p>

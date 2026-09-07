@@ -85,15 +85,15 @@ export default function Projects() {
       <SectionFX variant="grid" />
       <SectionHeading index="02" eyebrow="Featured Work" title="Projects that ship" testId="projects-heading" />
 
-      <FadeIn className="flex flex-wrap gap-2 mb-10">
+      <FadeIn className="flex flex-nowrap sm:flex-wrap overflow-x-auto pb-2 sm:pb-0 gap-2 mb-10 -mx-2 px-2 no-scrollbar">
         {FILTERS.map((f) => (
           <button
             key={f}
             onClick={() => setFilter(f)}
             data-testid={`project-filter-${f.toLowerCase().replace(/[\/]/g, "-")}`}
-            className={`font-code text-xs uppercase tracking-widest px-5 py-2.5 rounded-full border transition-all ${
+            className={`font-code text-[11px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border transition-all shrink-0 ${
               filter === f
-                ? "bg-cyan-400 text-[#05070a] border-cyan-400 shadow-[0_0_20px_rgba(0,243,255,0.3)]"
+                ? "bg-cyan-400 text-[#05070a] border-cyan-400 shadow-[0_0_20px_rgba(0,243,255,0.3)] font-semibold"
                 : "border-slate-700 text-slate-400 hover:border-cyan-400/40 hover:text-cyan-400"
             }`}
           >
@@ -115,7 +115,7 @@ export default function Projects() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
                 data-testid={`project-card-${p.name.toLowerCase()}`}
-                className="glow-card glass rounded-2xl p-8 flex flex-col group"
+                className="glow-card glass rounded-2xl p-6 sm:p-8 flex flex-col group"
               >
                 <div className="flex items-start justify-between mb-6">
                   <span className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400/15 to-emerald-400/15 border border-cyan-400/25 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
