@@ -6,8 +6,8 @@ import { LINKS } from "../data";
 export default function ResumeModal({ isOpen, onClose }) {
   const [loading, setLoading] = useState(true);
 
-  // Direct Drive preview URL
-  const driveEmbedUrl = "https://drive.google.com/file/d/1_foUjalODzHxTdmsjr9ypM7pz_D_58wH/preview";
+  // Direct Drive preview URL derived from LINKS.resume
+  const driveEmbedUrl = LINKS.resume.replace(/\/view(\?.*)?$/, "/preview");
   const downloadUrl = "/resume.pdf";
 
   if (!isOpen) return null;

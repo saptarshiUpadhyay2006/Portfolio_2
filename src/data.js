@@ -2,7 +2,7 @@ export const LINKS = {
   github: "https://github.com/saptarshiUpadhyay2006",
   linkedin: "https://www.linkedin.com/in/saptarshi-upadhyay/",
   email: "upadhyay.saptarshi@gmail.com",
-  resume: "https://drive.google.com/file/d/1_foUjalODzHxTdmsjr9ypM7pz_D_58wH/view?usp=sharing",
+  resume: "https://drive.google.com/file/d/1UMDBns0P9HF-h8UnyxLhyIuHhu29c-dy/view?usp=sharing",
 };
 
 export const MARQUEE_ITEMS = [
